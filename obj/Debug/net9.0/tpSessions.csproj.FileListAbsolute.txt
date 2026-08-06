@@ -1,0 +1,10 @@
+C:\tpSessions\obj\Debug\net9.0\tpSessions.csproj.AssemblyReference.cache
+C:\tpSessions\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\tpSessions\obj\Debug\net9.0\tpSessions.GeneratedMSBuildEditorConfig.editorconfig
+C:\tpSessions\obj\Debug\net9.0\tpSessions.AssemblyInfoInputs.cache
+C:\tpSessions\obj\Debug\net9.0\tpSessions.AssemblyInfo.cs
+C:\tpSessions\obj\Debug\net9.0\tpSessions.csproj.CoreCompileInputs.cache
+C:\tpSessions\obj\Debug\net9.0\tpSessions.MvcApplicationPartsAssemblyInfo.cache
+C:\tpSessions\obj\Debug\net9.0\tpSessions.RazorAssemblyInfo.cache
+C:\tpSessions\obj\Debug\net9.0\tpSessions.RazorAssemblyInfo.cs
+C:\tpSessions\obj\Debug\net9.0\tpSessions.sourcelink.json

@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form asp-action="Registrarse" method="post">
+    <div class="form-group">
+        <label for="nombreUsuario">Nombre de usuario</label>
+        <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" required>
+    </div>
+    <div class="form-group">
+        <label for="contraseña">Contraseña</label>
+        <input type="password" class="form-control" id="contraseña" name="contraseña" required>
+    </div>
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
+    </div>
+    <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input type="text" class="form-control" id="apellido" name="apellido" required>
+    </div>
+    <div class="form-group">
+        <label for="tipoUsuario">Tipo de usuario</label>
+        <select class="form-control" id="tipoUsuario" name="tipoUsuario" required>
+            <option value="">Seleccione un tipo de usuario</option>
+            <option value="Administrador">Administrador</option>
+            <option value="Usuario">Usuario</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Registrarse</button>
+</form>
+<p>¿Ya tienes una cuenta? <a href="@Url.Action("IniciarSesion", "Home")">Inicia sesión aquí</a></p>
