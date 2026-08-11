@@ -15,11 +15,11 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        if (HttpContext.Session.GetString("id") = null){
+        if (HttpContext.Session.GetString("id") == null){
             return View("IniciarSesion");
         }
         BD bd = new BD();
-        ViewBag.user = bd.BuscarUsuario(HttpContext.Session.GetString("id"));
+        ViewBag.user = bd.MostrarUsuario(int.Parse(HttpContext.Session.GetString("id")));
         return View();   
     }
 
@@ -32,7 +32,9 @@ public class HomeController : Controller
             ViewBag.msj = "No existe ese usuario :)";
             return View();
         }
-        return RedirectToAction("Index");
+        else{
+            return RedirectToAction("Index");
+        }
     }
 
     public IActionResult CerrarSesion(){
@@ -40,8 +42,13 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
+    public IActionResult Registrarse(){
+        return View();
+    }
+
+
     [HttpPost]
-    public IActionResult Registrarse(string nombreUsuario, string contraseña, string nombre, string apellido, string tipoUsuario){
+    public IActionResult RegistrarDatos(string nombreUsuario, string contraseña, string nombre, string apellido, string tipoUsuario){
         Usuario user = new Usuario(nombreUsuario, contraseña, nombre, apellido, tipoUsuario);
         BD bd = new BD();
         bd.CrearUsuario(user);

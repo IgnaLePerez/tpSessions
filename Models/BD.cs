@@ -1,5 +1,5 @@
 using Dapper;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 
 namespace tpSessions.Models
@@ -11,10 +11,10 @@ namespace tpSessions.Models
         public int iniciarSesion(string nombreUsuario, string contraseña)
         {
             int id = -1;
-            string query = "SELECT * FROM Usuarios WHERE nombreUsuario = @nombreUsuario AND contraseña = @contraseña";
+            string query = "SELECT id FROM Usuarios WHERE nombreUsuario = @nombreUsuario AND contraseña = @contraseña";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                id = connection.QueryFirstOrDefault(query, new { nombreUsuario = nombreUsuario, contraseña = contraseña});
+                id = connection.QueryFirstOrDefault<int>(query, new { nombreUsuario = nombreUsuario, contraseña = contraseña });
             }
             return id;
         }
