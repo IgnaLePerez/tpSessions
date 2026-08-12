@@ -11,20 +11,20 @@ namespace tpSessions.Models
         public int iniciarSesion(string nombreUsuario, string contraseña)
         {
             int id = -1;
-            string query = "SELECT id FROM Usuarios WHERE nombreUsuario = @nombreUsuario AND contraseña = @contraseña";
+            string query = "SELECT id FROM Usuarios WHERE nombreUsuario = @NombreUsuario AND contraseña = @Contraseña";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                id = connection.QueryFirstOrDefault<int>(query, new { nombreUsuario = nombreUsuario, contraseña = contraseña });
+                id = connection.QueryFirstOrDefault<int>(query, new { NombreUsuario = nombreUsuario, Contraseña = contraseña });
             }
             return id;
         }
 
         public Usuario MostrarUsuario(int id){
             Usuario user = null;
-            string query = "SELECT * FROM Usuarios WHERE id = @id";
+            string query = "SELECT * FROM Usuarios WHERE id = @Id";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                user = connection.QueryFirstOrDefault(query, new { id = id });
+                user = connection.QueryFirstOrDefault<Usuario>(query, new { Id = id });
             }
             return user;
         }
@@ -33,8 +33,21 @@ namespace tpSessions.Models
             string query = "INSERT INTO Usuarios (nombreUsuario, contraseña, nombre, apellido, tipoUsuario) VALUES (@nombreUsuario, @contraseña, @nombre, @apellido, @tipoUsuario)";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                connection.Execute(query, new { nombreUsuario = user.NombreUsuario, contraseña = user.Contraseña, nombre = user.Nombre, apellido = user.Apellido, tipoUsuario = user.TipoUsuario });
+                connection.Execute(query, new { nombreUsuario = user.nombreUsuario, contraseña = user.contraseña, nombre = user.nombre, apellido = user.apellido, tipoUsuario = user.tipoUsuario });
             }
+        }
+
+        public bool ValidarNombreUsuario(string nombreUsuario){
+            string query = "SELECT COUNT(nombreUsuario) FROM Usuarios WHERE nombreUsuario = @nombreUsuario";
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                int count = connection.QueryFirstOrDefault<int>(query, new { nombreUsuario = nombreUsuario });
+                if (count > 0)
+                {
+                    return false;
+                }  
+            }
+            return true;
         }
     }
 }

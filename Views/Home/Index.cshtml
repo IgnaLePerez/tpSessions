@@ -3,8 +3,8 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Bienvenido @ViewBag.user.Nombre @ViewBag.user.Apellido</h1>
-    <p>@ViewBag.user.TipoUsuario</p>
+    <h1 class="display-4">Bienvenido @ViewBag.user.nombre @ViewBag.user.apellido</h1>
+    <p>@ViewBag.user.tipoUsuario</p>
 </div>
 
-<button class="btn btn-primary" onclick="@Url.Action("CerrarSesion", "Home")">Cerrar Sesión</button>
+<a class="btn btn-primary" href="@Url.Action("CerrarSesion", "Home")">Cerrar Sesión</a>

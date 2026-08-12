@@ -16,19 +16,21 @@ namespace tpSessions.Models
         haz que los atributos de Usuario.cs se puedan acceder desde otros lados con getters y setters
         */
 
-        public string NombreUsuario { get; set; }
-        public string Contraseña { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string TipoUsuario { get; set; }
+        public string nombreUsuario { get; set; }
+        public string contraseña { get; set; }
+        public string nombre { get; set; }
+        public string apellido { get; set; }
+        public string tipoUsuario { get; set; }
+        public int id { get; set; }
 
-        public Usuario(string nombreUsuario, string contraseña, string nombre, string apellido, string tipoUsuario)
+        public Usuario(string nombreUsuario, string contraseña, string nombre, string apellido, string tipoUsuario,int id)
         {
-            this.NombreUsuario = nombreUsuario;
-            this.Contraseña = contraseña;
-            this.Nombre = nombre;
-            this.Apellido = apellido;
-            this.TipoUsuario = tipoUsuario;
+            this.nombreUsuario = nombreUsuario;
+            this.contraseña = contraseña;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.tipoUsuario = tipoUsuario;
+            this.id = id;
         }
     }
 }

@@ -16,18 +16,24 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         if (HttpContext.Session.GetString("id") == null){
-            return View("IniciarSesion");
+            return RedirectToAction("VistaIniciarSesion");
         }
         BD bd = new BD();
         ViewBag.user = bd.MostrarUsuario(int.Parse(HttpContext.Session.GetString("id")));
         return View();   
     }
 
+    public IActionResult VistaIniciarSesion(){
+        ViewBag.msj = null;
+        return View("IniciarSesion");
+    }
+
+
     [HttpPost]
-    public IActionResult IniciarSesion(string nombreUsuartio, string contraseña)
+    public IActionResult IniciarSesion(string nombreUsuario, string contraseña)
     {
         BD bd = new BD();
-        HttpContext.Session.SetString("id", bd.iniciarSesion(nombreUsuartio, contraseña).ToString());
+        HttpContext.Session.SetString("id", bd.iniciarSesion(nombreUsuario, contraseña).ToString());
         if (HttpContext.Session.GetString("id") == "-1"){
             ViewBag.msj = "No existe ese usuario :)";
             return View();
@@ -43,17 +49,22 @@ public class HomeController : Controller
     }
 
     public IActionResult Registrarse(){
+        ViewBag.msj = null;
         return View();
     }
 
 
     [HttpPost]
     public IActionResult RegistrarDatos(string nombreUsuario, string contraseña, string nombre, string apellido, string tipoUsuario){
-        Usuario user = new Usuario(nombreUsuario, contraseña, nombre, apellido, tipoUsuario);
         BD bd = new BD();
-        bd.CrearUsuario(user);
-        HttpContext.Session.SetString("id", bd.iniciarSesion(nombreUsuario, contraseña).ToString());
-        return RedirectToAction("Index");
+        if (bd.ValidarNombreUsuario(nombreUsuario)){
+            Usuario user = new Usuario(nombreUsuario, contraseña, nombre, apellido, tipoUsuario, 0);
+            bd.CrearUsuario(user);
+            HttpContext.Session.SetString("id", bd.iniciarSesion(nombreUsuario, contraseña).ToString());
+            return RedirectToAction("Index");
+        }
+        ViewBag.msj = "El nombre de usuario ya existe, por favor elija otro";
+        return View("Registrarse");
     }
 
     public IActionResult Privacy()

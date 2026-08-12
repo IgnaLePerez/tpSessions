@@ -2,6 +2,7 @@
     ViewData["Title"] = "Home Page";
 }
 
+<p>@ViewBag.msj</p>
 <form action="@Url.Action("RegistrarDatos", "home")" method="post">
     <div class="form-group">
         <label for="nombreUsuario">Nombre de usuario</label>
@@ -22,11 +23,12 @@
     <div class="form-group">
         <label for="tipoUsuario">Tipo de usuario</label>
         <select class="form-control" id="tipoUsuario" name="tipoUsuario" required>
-            <option value="">Seleccione un tipo de usuario</option>
-            <option value="Administrador">Administrador</option>
-            <option value="Usuario">Usuario</option>
+            <option value="Alumno">Alumno</option>
+            <option value="Docente">Docente</option>
+            <option value="Coordinador">Coordinador</option>
+            <option value="Tutor">Tutor</option>
         </select>
     </div>
     <button type="submit" class="btn btn-primary">Registrarse</button>
 </form>
-<p>¿Ya tienes una cuenta? <a href="@Url.Action("IniciarSesion", "Home")">Inicia sesión aquí</a></p>
+<p>¿Ya tienes una cuenta? <a href="@Url.Action("VistaIniciarSesion", "Home")">Inicia sesión aquí</a></p>
