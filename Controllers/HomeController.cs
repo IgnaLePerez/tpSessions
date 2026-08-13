@@ -24,7 +24,7 @@ public class HomeController : Controller
     }
 
     public IActionResult VistaIniciarSesion(){
-        ViewBag.msj = null;
+        ViewBag.msj = "";
         return View("IniciarSesion");
     }
 
@@ -33,7 +33,7 @@ public class HomeController : Controller
     public IActionResult IniciarSesion(string nombreUsuario, string contraseña)
     {
         BD bd = new BD();
-        HttpContext.Session.SetString("id", bd.iniciarSesion(nombreUsuario, contraseña).ToString());
+        HttpContext.Session.SetString("id", bd.BuscarSesion(nombreUsuario, contraseña));
         if (HttpContext.Session.GetString("id") == "-1"){
             ViewBag.msj = "No existe ese usuario :)";
             return View();
@@ -60,7 +60,7 @@ public class HomeController : Controller
         if (bd.ValidarNombreUsuario(nombreUsuario)){
             Usuario user = new Usuario(nombreUsuario, contraseña, nombre, apellido, tipoUsuario, 0);
             bd.CrearUsuario(user);
-            HttpContext.Session.SetString("id", bd.iniciarSesion(nombreUsuario, contraseña).ToString());
+            HttpContext.Session.SetString("id", bd.BuscarSesion(nombreUsuario, contraseña));
             return RedirectToAction("Index");
         }
         ViewBag.msj = "El nombre de usuario ya existe, por favor elija otro";

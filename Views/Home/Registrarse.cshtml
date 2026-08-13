@@ -1,34 +1,57 @@
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Registrarse";
 }
 
-<p>@ViewBag.msj</p>
-<form action="@Url.Action("RegistrarDatos", "home")" method="post">
-    <div class="form-group">
-        <label for="nombreUsuario">Nombre de usuario</label>
-        <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" required>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">Crear Nueva Cuenta</h3>
+                </div>
+                <div class="card-body p-4">
+                    @if(!string.IsNullOrEmpty(ViewBag.msj))
+                    {
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            @ViewBag.msj
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    <form action="@Url.Action("RegistrarDatos", "home")" method="post">
+                        <div class="mb-3">
+                            <label for="nombreUsuario" class="form-label">Nombre de usuario</label>
+                            <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contraseña" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="contraseña" name="contraseña" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="apellido" class="form-label">Apellido</label>
+                                <input type="text" class="form-control" id="apellido" name="apellido" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipoUsuario" class="form-label">Tipo de usuario</label>
+                            <select class="form-select" id="tipoUsuario" name="tipoUsuario" required>
+                                <option value="">Selecciona tu rol</option>
+                                <option value="Alumno">Alumno</option>
+                                <option value="Docente">Docente</option>
+                                <option value="Coordinador">Coordinador</option>
+                                <option value="Tutor">Tutor</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 mb-3">Registrarse</button>
+                    </form>
+                    <hr>
+                    <p class="text-center mb-0">¿Ya tienes una cuenta? <a href="@Url.Action("VistaIniciarSesion", "Home")" class="link-success">Inicia sesión aquí</a></p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="contraseña">Contraseña</label>
-        <input type="password" class="form-control" id="contraseña" name="contraseña" required>
-    </div>
-    <div class="form-group">
-        <label for="nombre">Nombre</label>
-        <input type="text" class="form-control" id="nombre" name="nombre" required>
-    </div>
-    <div class="form-group">
-        <label for="apellido">Apellido</label>
-        <input type="text" class="form-control" id="apellido" name="apellido" required>
-    </div>
-    <div class="form-group">
-        <label for="tipoUsuario">Tipo de usuario</label>
-        <select class="form-control" id="tipoUsuario" name="tipoUsuario" required>
-            <option value="Alumno">Alumno</option>
-            <option value="Docente">Docente</option>
-            <option value="Coordinador">Coordinador</option>
-            <option value="Tutor">Tutor</option>
-        </select>
-    </div>
-    <button type="submit" class="btn btn-primary">Registrarse</button>
-</form>
-<p>¿Ya tienes una cuenta? <a href="@Url.Action("VistaIniciarSesion", "Home")">Inicia sesión aquí</a></p>
+</div>

@@ -2,9 +2,17 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Bienvenido @ViewBag.user.nombre @ViewBag.user.apellido</h1>
-    <p>@ViewBag.user.tipoUsuario</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <h1 class="display-5 mb-2">Bienvenido</h1>
+                    <h2 class="text-primary mb-3">@ViewBag.user.nombre @ViewBag.user.apellido</h2>
+                    <p class="lead text-muted mb-4">@ViewBag.user.tipoUsuario</p>
+                    <a class="btn btn-danger" href="@Url.Action("CerrarSesion", "Home")">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-<a class="btn btn-primary" href="@Url.Action("CerrarSesion", "Home")">Cerrar Sesión</a>

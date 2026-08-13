@@ -8,13 +8,16 @@ namespace tpSessions.Models
     {
         private static string _connectionString = @"Server=localhost; DataBase=tpSessions;Integrated Security=True;TrustServerCertificate=True;";
 
-        public int iniciarSesion(string nombreUsuario, string contraseña)
+        public string BuscarSesion(string nombreUsuario, string contraseña)
         {
-            int id = -1;
+            string id = "-1";
             string query = "SELECT id FROM Usuarios WHERE nombreUsuario = @NombreUsuario AND contraseña = @Contraseña";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                id = connection.QueryFirstOrDefault<int>(query, new { NombreUsuario = nombreUsuario, Contraseña = contraseña });
+                if(connection.QueryFirstOrDefault<string>(query, new { NombreUsuario = nombreUsuario, Contraseña = contraseña }) != null)
+                {
+                    id = connection.QueryFirstOrDefault<string>(query, new { NombreUsuario = nombreUsuario, Contraseña = contraseña }).ToString();
+                }
             }
             return id;
         }
