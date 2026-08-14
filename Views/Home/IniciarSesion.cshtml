@@ -17,13 +17,14 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     }
-                    <form asp-action="IniciarSesion" method="post">
+                    <form asp-action="IniciarSesion" method="post" onsubmit="return verificarContraseña()">
                         <div class="mb-3">
                             <label for="nombreUsuario" class="form-label">Nombre de usuario</label>
                             <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" required>
                         </div>
                         <div class="mb-3">
                             <label for="contraseña" class="form-label">Contraseña</label>
+                            <label for="contraseña" id="msjContraseña"></label>
                             <input type="password" class="form-control" id="contraseña" name="contraseña" required>
                         </div>
                         <button type="submit" class="btn btn-primary w-100 mb-3">Iniciar sesión</button>
