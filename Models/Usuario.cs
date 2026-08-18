@@ -22,14 +22,16 @@ namespace tpSessions.Models
         public string apellido { get; set; }
         public string tipoUsuario { get; set; }
         public int id { get; set; }
+        public int idGenero { get; set; }
 
-        public Usuario(string nombreUsuario, string contraseña, string nombre, string apellido, string tipoUsuario,int id)
+        public Usuario(string nombreUsuario, string contraseña, string nombre, string apellido, string tipoUsuario, int id, int idGenero)
         {
             this.nombreUsuario = nombreUsuario;
             this.contraseña = contraseña;
             this.nombre = nombre;
             this.apellido = apellido;
             this.tipoUsuario = tipoUsuario;
+            this.idGenero = idGenero;
             this.id = id;
         }
     }

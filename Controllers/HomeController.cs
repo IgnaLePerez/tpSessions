@@ -55,10 +55,10 @@ public class HomeController : Controller
 
 
     [HttpPost]
-    public IActionResult RegistrarDatos(string nombreUsuario, string contraseña, string nombre, string apellido, string tipoUsuario){
+    public IActionResult RegistrarDatos(string nombreUsuario, string contraseña, string nombre, string apellido, string tipoUsuario, string genero){
         BD bd = new BD();
         if (bd.ValidarNombreUsuario(nombreUsuario)){
-            Usuario user = new Usuario(nombreUsuario, contraseña, nombre, apellido, tipoUsuario, 0);
+            Usuario user = new Usuario(nombreUsuario, contraseña, nombre, apellido, tipoUsuario, int.Parse(genero), 0);
             bd.CrearUsuario(user);
             HttpContext.Session.SetString("id", bd.BuscarSesion(nombreUsuario, contraseña));
             return RedirectToAction("Index");

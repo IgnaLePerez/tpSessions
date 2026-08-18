@@ -33,10 +33,10 @@ namespace tpSessions.Models
         }
 
         public void CrearUsuario(Usuario user){
-            string query = "INSERT INTO Usuarios (nombreUsuario, contraseña, nombre, apellido, tipoUsuario) VALUES (@nombreUsuario, @contraseña, @nombre, @apellido, @tipoUsuario)";
+            string query = "INSERT INTO Usuarios (nombreUsuario, contraseña, nombre, apellido, tipoUsuario, idGenero) VALUES (@nombreUsuario, @contraseña, @nombre, @apellido, @tipoUsuario, @idGenero)";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                connection.Execute(query, new { nombreUsuario = user.nombreUsuario, contraseña = user.contraseña, nombre = user.nombre, apellido = user.apellido, tipoUsuario = user.tipoUsuario });
+                connection.Execute(query, new { nombreUsuario = user.nombreUsuario, contraseña = user.contraseña, nombre = user.nombre, apellido = user.apellido, tipoUsuario = user.tipoUsuario, idGenero = user.idGenero });
             }
         }
 
