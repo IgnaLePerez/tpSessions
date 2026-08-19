@@ -138,7 +138,6 @@ C:\tpSessions\obj\Debug\net9.0\refint\tpSessions.dll
 C:\tpSessions\obj\Debug\net9.0\tpSessions.pdb
 C:\tpSessions\obj\Debug\net9.0\tpSessions.genruntimeconfig.cache
 C:\tpSessions\obj\Debug\net9.0\ref\tpSessions.dll
-C:\tpSessions\obj\Debug\net9.0\compressed\nk5oe9u6kp-gcosrckwqo.gz
 C:\tpSessions\obj\Debug\net9.0\compressed\126wg3dgtw-4bvatrcvq8.gz
 C:\Users\ignac\OneDrive\Documentos\2026\programacion\tpSessions\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\ignac\OneDrive\Documentos\2026\programacion\tpSessions\bin\Debug\net9.0\appsettings.json
@@ -425,3 +424,4 @@ C:\Users\49628407\tpSessions\obj\Debug\net9.0\tpSessions.pdb
 C:\Users\49628407\tpSessions\obj\Debug\net9.0\tpSessions.genruntimeconfig.cache
 C:\Users\49628407\tpSessions\obj\Debug\net9.0\ref\tpSessions.dll
 C:\Users\49628407\tpSessions\obj\Debug\net9.0\compressed\nk5oe9u6kp-mak3zpoy81.gz
+C:\tpSessions\obj\Debug\net9.0\compressed\nk5oe9u6kp-mak3zpoy81.gz
